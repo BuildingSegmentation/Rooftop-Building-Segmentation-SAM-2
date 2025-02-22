@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map Segmentation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo">Building Segmentation Group</h1>
+            <button class="about-button">About Us</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Rooftop Building Segmentation Using Segment </h1>
+            <h1>Anything Model 2 in Southern Jakarta</h1>
+            <p>Jakarta, Indonesia</p>
+        </section>
+
+        <section class="content">
+            <h2>Introduction to this Project</h2>
+            <p>
+                Rooftop segmentation is crucial for various applications, that includes urban planning and disaster management. While deep learning has shown promise in automating this process, challenges still remain, such as complex and dense building structure, and also misregistration between spectral and elevation. The current methods often struggle with precise boundary detection and generalization across diverse urban landscapes. Although some studies have achieved reasonable accuracy using multi-task deep learning networks, creating large-scale building inventories and analyzing urban dynamics remains a challenge. The Segment Anything Model 2 (SAM 2), with its zero-shot generalization and strong performance in various segmentation tasks, offers a potential solution. This study aims to assess the effectiveness of SAM-2 for rooftop building segmentation in Southern Jakarta, evaluating its precision and IoU value to handle registration issues and conclusions. The study concluded that the SAM-2 demonstrates strong potential for rooftop segmentation, with a recall score of 91% as the evidence, indicating its ability to detect most rooftops effectively. However, the model's precision (64%) and IoU (60%) scores highlight challenges in boundary accuracy and misclassification of non-building areas, particularly in dense urban environments.
+            </p>
+        </section>
+
+        <!-- <section class="data">
+            
+            <div class="carousel">
+                <button class="carousel-button prev">❮</button>
+                <div class="carousel-images">
+                    <img src="image5.png" alt="Image 1">
+                    <img src="image5.png" alt="Image 2">
+                    <img src="image5.png" alt="Image 3">
+                </div>
+                <button class="carousel-button next">❯</button>
+                <script>
+                    const carousel = document.querySelector('.carousel-images');
+                    const images = document.querySelectorAll('.carousel-images img');
+                    const prevButton = document.querySelector('.carousel-button.prev');
+                    const nextButton = document.querySelector('.carousel-button.next');
+                    let currentIndex = 0;
+                
+                    function updateCarousel() {
+                        const width = images[0].clientWidth;
+                        carousel.style.transform = `translateX(-${currentIndex * width}px)`;
+                    }
+                
+                    nextButton.addEventListener('click', () => {
+                        currentIndex = (currentIndex + 1) % images.length;
+                        updateCarousel();
+                    });
+                
+                    prevButton.addEventListener('click', () => {
+                        currentIndex = (currentIndex - 1 + images.length) % images.length;
+                        updateCarousel();
+                    });
+                
+                    
+                    window.addEventListener('resize', updateCarousel);
+                </script>
+                
+            </div>
+        </section> -->
+        <section class="data">
+            <div class="list-wrapper">
+                <ul class="list">
+                    <li class="item">
+                        <div class="contentss">
+                            <h3 class="title">Tools</h3>
+                            <p class="description">This research uses Segment Anything Model 2 (SAM2) to segment building roofs in South Jakarta, with the support of leafmap for interactive mapping, rasterio for raster data manipulation, and geopanda for geospatial data processing. Additionally, scikit-learn is used for model evaluation through metrics such as Precision, Recall, F1-Score, and Intersection over Union (IoU).</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="contentss">
+                            <h3 class="title">Data</h3>
+                            <p class="description">The dataset used consists of high resolution satellite imagery from South Jakarta obtained via leafmap, as well as geoJSON vector data which contains building annotations as ground truth. This data is converted to raster format for comparison with the segmentation results produced by SAM2, ensuring alignment of coordinate systems and resolution with the reprojection method.</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="contentss">
+                            <h3 class="title">Objective</h3>
+                            <p class="description">This research focuses on the segmentation of rooftop buildings in Southern Jakarta using the Segment Anything Model 2 (SAM2) to enhance accuracy and efficiency in urban mapping and remote sensing applications</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="contentss">
+                            <h3 class="title">Methodology</h3>
+                            <p class="description">This research began with the extraction of satellite images from leafmap and annotation of reference points for building segmentation using SAM2. The segmentation results are then evaluated by comparing the predicted mask against the ground truth using raster-based metrics such as IoU and F1-Score. The vector data resulting from segmentation is smoothed using the regularization method, before error analysis is carried out to increase model accuracy.</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="contentss">
+                            <h3 class="title">Accuracy</h3>
+                            <p class="description">Model evaluation is carried out by calculating the Intersection over Union (IoU) and F1-Score between the predicted mask and ground truth. The model shows good performance with a high IoU score, indicating that the predicted building area overlaps significantly with the actual data. In addition, the Precision and Recall values ​​show a balance between accurate positive detection and minimal detection errors, so this method can be relied on for mapping buildings in urban environments.</p>
+                        </div>
+                    </li>
+                </ul>
+                <button onclick="handleClick('previous')" class="button button--previous" type="button">➜</button>
+                <button onclick="handleClick('next')" class="button button--next" type="button">➜</button>
+            </div>
+            <script>
+                const list = document.querySelector(".list");
+              
+                // We want to know the width of one of the items. We'll use this to decide how many pixels we want our carousel to scroll.
+                const item = document.querySelector(".item");
+                const itemWidth = item.offsetWidth;
+              
+                function handleClick(direction) {
+                  // Based on the direction we call `scrollBy` with the item width we got earlier
+                  if(direction === "previous") {
+                    list.scrollBy({ left: -itemWidth, behavior: "smooth" });
+                  } else {
+                    list.scrollBy({ left: itemWidth, behavior: "smooth" });
+                  }
+                }
+              </script>
+        </section>
+
+        <section class="setup">
+            <div class="text">
+            <h2>Setting up the Environment and Data Acquisition</h2>
+            <p>
+                To initiate the building segmentation process, we first establish a Python environment equipped with essential libraries such as segment geospacial, LeafMap, and SAMgeo. Subsequently, we load a base map from OpenStreetMap using the LeafMap library, providing a visual reference for the segmentation process. For data acquisition, we utilize satellite imagery sourced from Google Maps and leverage pre-existing building footprint data in the format of JakartaBuilding shapefiles. 
+            </p>
+            </div>
+            <div class="setupimage">
+            <img src="image5.png" alt="Map example">
+            <!-- <iframe src="https://ee-nikolsonriandi.projects.earthengine.app/view/urbansprawljakartaonly" width="100%" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+            </div>
+        </section>
+
+        <section class="capturing">
+            </div>
+            <div class="captureimage">
+            <img src="image6.png" alt="Map example">
+            </div>
+            <div class="text1">
+            <h2>Capturing Satellite Imagery from Google Maps</h2>
+            <p>
+                Once the environment and data are set up, we captured a satellite imagery of area of buildings that are going to be segmented from Google Maps. This satellite imagery then would be combined with the existing shapefile of Jakarta's building footprint as reference data. 
+            </p>
+            <!-- <iframe src="https://ee-nikolsonriandi.projects.earthengine.app/view/urbansprawljakartaonly" width="100%" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+        </section>
+
+        <section class="point">
+            <div class="text2">
+            <h2>Point Prompts Making to Make Object Masks with QGIS</h2>
+            
+            <p>
+                To create object masks for automated segmentation, a set of control points is manually digitized on the building outlines using the QGIS software. A satellite image of the target area, previously acquired from Google Maps, serves as the basemap for this process. These control points are used to define the boundaries of the buildings and will be used to train a machine learning model for automated segmentation. 
+            </p>
+            </div>
+            <div class="pointimage">
+            <img src="image8.png" alt="Map example">
+            </div>
+            <!-- <iframe src="https://ee-nikolsonriandi.projects.earthengine.app/view/urbansprawljakartaonly" width="100%" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+        </section>
+
+        <section class="segment">
+            </div>
+            <div class="segmentimage">
+            <img src="image9.png" alt="Map example" class="map-image">
+            </div>
+            <div class="text3">
+            <h2>Segmented Masks Result from Point Prompts</h2>
+            <p>
+                The created points prompts were exported to a JSON file format and then processed in Google Colab to generate segmented masks as shown in the figure
+            </p>
+            
+            <!-- <iframe src="https://ee-nikolsonriandi.projects.earthengine.app/view/urbansprawljakartaonly" width="100%" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+        </section>
+
+        <section class="regularized">
+            <div class="text4">
+            <h2>Regularized Building Footprints Result</h2>
+            <p>
+                By using the regularize() function, the segmented masks from the previous step are further refined through a regularization process. This involves smoothing the edges of the building polygons and removing any unnecessary details or noise. 
+            </p>
+            </div>
+            <div class="regularizeimage">
+            <img src="image10.png" alt="Map example" class="map-image">
+            </div>
+            <!-- <iframe src="https://ee-nikolsonriandi.projects.earthengine.app/view/urbansprawljakartaonly" width="100%" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+        </section>
+
+        <section class="interactive">
+            <h2>Segmentation Simulation</h2>
+            <p>This section shows our segmentation Simulation of rooftop buildings in southern jakarta using SAM2 (Segment Anything Model 2).</p>
+            <div class="interactiveimage">
+                <video controls autoplay loop src="BuildingSegmentationVideo.mp4" width="100%"></video>
+                
+            </div>
+        </section>
+
+        <section class="contributors">
+            <h2>Contributor</h2>
+            <div class="contributor-list">
+                <div class="contributor">
+                    <img src="Allan.jpg" alt="Allan Dharma Saputra">
+                    <h3>Allan Dharma Saputra</h3>
+                    <p>2501992280</p>
+                </div>
+                <div class="contributor">
+                    <img src="Dylan-2502009091.jpg" alt="Dylan">
+                    <h3>Dylan</h3>
+                    <p>2502009091</p>
+                </div>
+                <div class="contributor">
+                    <img src="Priscila.jpg" alt="Priscilla">
+                    <h3>Priscilla Yo</h3>
+                    <p>2540130900</p>
+                </div>
+                <div class="contributor">
+                    <img src="Pak Edy.jpg" alt="Dr. Ir. Edy Irwansyah, S.T., M.Si., IPM, ASEAN Eng.">
+                    <h3>Dr. Ir. Edy Irwansyah, S.T., M.Si., IPM, ASEAN Eng.</h3>
+                    <p>Supervisor</p>
+                </div>
+    </main>
+    <footer class="footer">
+        <div class="text">
+            <h2 class="line1">G3 Project</h2>
+            <h2 class="line2">Semester 7 Project</h2>
+            <h2>Building Segmentation</h2>
+        </div>
+        <p>&copy; 2024 Building Segmentation Project. All rights reserved.</p>
+    </footer>
+</body>
+</html>
